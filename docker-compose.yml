@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  gapp:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOST=0.0.0.0
+      # Auth.js environment variables
+      - AUTH_SECRET=${AUTH_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - gapp-network
+
+networks:
+  gapp-network:
+    driver: bridge

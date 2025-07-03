@@ -9,10 +9,12 @@ services:
       - NODE_ENV=production
       - PORT=3000
       - HOST=0.0.0.0
+      - ORIGIN=http://localhost:3000
       # Auth.js environment variables
       - AUTH_SECRET=${AUTH_SECRET}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - AUTH_TRUST_HOST=${AUTH_TRUST_HOST}
     env_file:
       - .env
     restart: unless-stopped
